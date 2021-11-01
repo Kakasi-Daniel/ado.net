@@ -46,16 +46,14 @@ namespace MoviesDAL.Repositories
 
             using (SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
             {
-                cnn.Open();
-
+               
                 using (SqlCommand cmd = new SqlCommand(sqlQuerry,cnn))
                     {
-                        cmd.Parameters.Add(new SqlParameter("@MovieName", movie.Name));
-                        cmd.Parameters.Add(new SqlParameter("@MovieReleaseDate", movie.ReleaseDate));
-
-                        cmd.CommandType = CommandType.Text;
-
-                        cmd.ExecuteNonQuery();
+                    cmd.Parameters.Add(new SqlParameter("@MovieName", movie.Name));
+                    cmd.Parameters.Add(new SqlParameter("@MovieReleaseDate", movie.ReleaseDate));
+                    cmd.CommandType = CommandType.Text;
+                    cnn.Open();
+                    cmd.ExecuteNonQuery();
                     }
                 
             }
