@@ -722,19 +722,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\KakasiDaniel\\.nuget\\packages\\": {}
+    "C:\\Users\\kakas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\MoviesExercise\\Backend\\MoviesAPI\\MoviesAPI.csproj",
+      "projectUniqueName": "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesAPI\\MoviesAPI.csproj",
       "projectName": "MoviesAPI",
-      "projectPath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesAPI\\MoviesAPI.csproj",
-      "packagesPath": "C:\\Users\\KakasiDaniel\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesAPI\\obj\\",
+      "projectPath": "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesAPI\\MoviesAPI.csproj",
+      "packagesPath": "C:\\Users\\kakas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\KakasiDaniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kakas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -748,11 +748,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Projects\\MoviesExercise\\Backend\\MoviesBLL\\MoviesBLL.csproj": {
-              "projectPath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesBLL\\MoviesBLL.csproj"
+            "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesBLL\\MoviesBLL.csproj": {
+              "projectPath": "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesBLL\\MoviesBLL.csproj"
             },
-            "C:\\Projects\\MoviesExercise\\Backend\\MoviesLibrary\\MoviesLibrary.csproj": {
-              "projectPath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesLibrary\\MoviesLibrary.csproj"
+            "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesLibrary\\MoviesLibrary.csproj": {
+              "projectPath": "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesLibrary\\MoviesLibrary.csproj"
             }
           }
         }

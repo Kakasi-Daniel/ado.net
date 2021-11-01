@@ -39,5 +39,30 @@ namespace MoviesDAL.Repositories
 
             return Movies;
         }
+
+         public void PostMovie(MovieModel movie)
+        {
+            string sqlQuerry = "insert into movies(Name,ReleaseDate) values(@MovieName,@MovieReleaseDate);";
+
+            using (SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
+            {
+                cnn.Open();
+
+                using (SqlCommand cmd = new SqlCommand(sqlQuerry,cnn))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@MovieName", movie.Name));
+                        cmd.Parameters.Add(new SqlParameter("@MovieReleaseDate", movie.ReleaseDate));
+
+                        cmd.CommandType = CommandType.Text;
+
+                        cmd.ExecuteNonQuery();
+                    }
+                
+            }
+        }
+
+
+
+
     }
 }

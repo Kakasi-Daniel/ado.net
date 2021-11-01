@@ -27,5 +27,14 @@ namespace MoviesAPI.Controllers
 
             return movieNames;
         }
+
+
+        [HttpPost]
+        public void PostMovie([FromBody]MovieModel movie)
+        {
+            moviesRepo.PostMovie(movie);
+        }
+
+        
     }
 }

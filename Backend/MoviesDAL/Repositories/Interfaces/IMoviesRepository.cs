@@ -10,5 +10,6 @@ namespace MoviesDAL.Repositories.Interfaces
     public interface IMoviesRepository
     {
         List<MovieModel> GetMovies();
+        void PostMovie(MovieModel movie);
     }
 }

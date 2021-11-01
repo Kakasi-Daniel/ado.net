@@ -12,3 +12,17 @@ C:\Projects\MoviesExercise\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.csproj.C
 C:\Projects\MoviesExercise\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.dll
 C:\Projects\MoviesExercise\Backend\MoviesDAL\obj\Debug\net5.0\ref\MoviesDAL.dll
 C:\Projects\MoviesExercise\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.pdb
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\bin\Debug\net5.0\MoviesDAL.deps.json
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\bin\Debug\net5.0\MoviesDAL.dll
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\bin\Debug\net5.0\ref\MoviesDAL.dll
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\bin\Debug\net5.0\MoviesDAL.pdb
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\bin\Debug\net5.0\MoviesLibrary.dll
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\bin\Debug\net5.0\MoviesLibrary.pdb
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.csproj.AssemblyReference.cache
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.AssemblyInfoInputs.cache
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.AssemblyInfo.cs
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.csproj.CoreCompileInputs.cache
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.dll
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\obj\Debug\net5.0\ref\MoviesDAL.dll
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.pdb
