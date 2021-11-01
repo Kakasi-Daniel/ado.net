@@ -1,0 +1,12 @@
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\bin\Debug\net5.0\MoviesLibrary.deps.json
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\bin\Debug\net5.0\MoviesLibrary.dll
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\bin\Debug\net5.0\ref\MoviesLibrary.dll
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\bin\Debug\net5.0\MoviesLibrary.pdb
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.csproj.AssemblyReference.cache
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.AssemblyInfoInputs.cache
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.AssemblyInfo.cs
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.csproj.CoreCompileInputs.cache
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.dll
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\ref\MoviesLibrary.dll
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.pdb
