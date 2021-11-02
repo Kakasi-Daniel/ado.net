@@ -14,6 +14,7 @@ namespace MoviesDAL
         public static void RegisterServices(IServiceCollection services)
         {
             services.AddTransient<IMoviesRepository, MoviesRepository>();
+            services.AddTransient<IActorsRepository, ActorsRepository>();
         }
     }
 }

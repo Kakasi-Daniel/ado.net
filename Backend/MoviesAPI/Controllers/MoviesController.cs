@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MoviesBLL.Services;
 using MoviesDAL.Repositories.Interfaces;
 using MoviesLibrary.Models;
 using System;
@@ -13,26 +14,55 @@ namespace MoviesAPI.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
-        private readonly IMoviesRepository moviesRepo;
+        private readonly MoviesService movieService;
 
-        public MoviesController(IMoviesRepository moviesRepo)
+        public MoviesController(MoviesService movieService)
         {
-            this.moviesRepo = moviesRepo;
+            this.movieService = movieService;
         }
 
         [HttpGet]
-        public List<MovieModel> GetAllMovies()
+        public async Task<ActionResult<List<MovieModel>>> GetAllMovies()
         {
-            List<MovieModel> movieNames = moviesRepo.GetMovies();
+            List<MovieModel> movieNames = await movieService.GetMovieListAsync();
 
             return movieNames;
+        }
+        
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMovieID(int id)
+        {
+            MovieModel movie = await movieService.GetMovieAsync(id);
+
+            return movie.Name == null ? NotFound() : Ok(movie); 
         }
 
 
         [HttpPost]
-        public void PostMovie([FromBody]MovieModel movie)
+        public async Task<IActionResult> PostMovie([FromBody]MovieModel movie)
         {
-            moviesRepo.PostMovie(movie);
+            int id = await movieService.PostMovieAsync(movie);
+            movie.Id = id;
+            return Ok(movie);
+            
+        }
+        
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMovie(int id)
+        {
+            int rows = await movieService.DeleteMovieByIdAsync(id);
+
+            return rows == 0 ? NotFound() : Ok();
+            
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<MovieModel>> UpdateMovie([FromRoute]int id,[FromBody] MovieModel movie)
+        {
+            var result = await movieService.UpdateMovieAsync(id, movie);
+
+            return result;
+
         }
 
         
