@@ -11,6 +11,7 @@ namespace MoviesBLL
             services.AddScoped<MoviesService>();
             services.AddScoped<ActorsService>();
             services.AddScoped<RatingsService>();
+            services.AddScoped<RolesService>();
 
             MoviesDAL.Configuration.RegisterServices(services);
         }

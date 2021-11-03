@@ -21,19 +21,21 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<List<RatingModel>> GetRatings()
+        public async Task<ActionResult<List<RatingModel>>> GetRatings()
         {
             return await ratings.GetRatingsAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<RatingModel> GetRating([FromRoute] int id)
-        {
-            return await ratings.GetRatingAsync(id);
+        public async Task<ActionResult<RatingModel>> GetRating([FromRoute] int id)
+        {   
+            var rating = await ratings.GetRatingAsync(id);
+
+            return rating != null ? Ok(rating) : NotFound();
         }
 
         [HttpPost]
-        public async Task<RatingModel> AddRating([FromBody] RatingModel rating)
+        public async Task<ActionResult<RatingModel>> AddRating([FromBody] RatingModel rating)
         {
             int id = await ratings.AddRatingAsync(rating);
 
@@ -41,7 +43,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<RatingModel> UpdateRating([FromRoute] int id, [FromBody] RatingModel rating)
+        public async Task<ActionResult<RatingModel>> UpdateRating([FromRoute] int id, [FromBody] RatingModel rating)
         {
             await ratings.UpdateRatingAsync(id, rating);
 

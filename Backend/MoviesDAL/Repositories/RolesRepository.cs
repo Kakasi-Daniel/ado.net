@@ -1,5 +1,5 @@
 ﻿using MoviesDAL.Repositories.Interfaces;
-using MoviesLibrary.Models;
+using MoviesLibrary.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,119 +10,122 @@ using System.Threading.Tasks;
 
 namespace MoviesDAL.Repositories
 {
-    public class RatingsRepository : IRatingsRepository
+    public class RolesRepository : IRolesRepository
     {
-        public async Task<int> AddRatingAsync(RatingModel rating)
+        public async Task<int> AddRoleAsync(RoleAddIn role)
         {
-            string sqlQuerry = @"insert into ratings(MovieId,Rating) values(@MovieId,@RatingValue)
+            string sqlQuerry = @"insert into roles(RoleName,ActorID,MovieID) values(@RoleName,@ActorID,@MovieID)
                                  SELECT SCOPE_IDENTITY()";
             int insertedId = 0;
-
             using (SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
             using (SqlCommand cmd = new SqlCommand(sqlQuerry, cnn))
             {
                 cnn.Open();
-                cmd.Parameters.Add(new SqlParameter("@MovieId", rating.MovieId));
-                cmd.Parameters.Add(new SqlParameter("@RatingValue", rating.Rating));
-                
+
+                cmd.Parameters.Add(new SqlParameter("@RoleName", role.Name));
+                cmd.Parameters.Add(new SqlParameter("@ActorID", role.ActorId));
+                cmd.Parameters.Add(new SqlParameter("@MovieID", role.MovieId));
+
                 cmd.CommandType = CommandType.Text;
                 insertedId = Convert.ToInt32(await cmd.ExecuteScalarAsync());
-
             }
-
             return insertedId;
         }
 
-        public async Task DeleteRatingAsync(int id)
+        public async Task DeleteRoleAsync(int id)
         {
-            string sql = "DELETE FROM ratings WHERE ID=@RatingId";
-            
+            string sql = "DELETE FROM roles WHERE ID=@RoleId";
+
             using (SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
             using (SqlCommand cmd = new SqlCommand(sql, cnn))
             {
                 cnn.Open();
-                cmd.Parameters.Add(new SqlParameter("@RatingId", id));
+                cmd.Parameters.Add(new SqlParameter("@RoleId", id));
                 cmd.CommandType = CommandType.Text;
                 int rows = await cmd.ExecuteNonQueryAsync();
-                if(rows == 0)
+                if (rows == 0)
                 {
                     throw new Exception("No rows affected");
                 }
             }
         }
 
-        public async Task<RatingModel> GetRatingByIdAsync(int id)
+        public async Task<RoleOut> GetRoleByIdAsync(int id)
         {
-            string sql = "SELECT * FROM ratings WHERE ID=@RatingID";
-            var rating = new RatingModel();
+            string sql = "SELECT * FROM roles WHERE ID=@RoleID";
+            var role = new RoleOut();
 
             using (SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
             using (SqlCommand cmd = new SqlCommand(sql, cnn))
             {
                 cnn.Open();
-                cmd.Parameters.Add(new SqlParameter("@RatingID",id));
+                cmd.Parameters.Add(new SqlParameter("@RoleID", id));
 
                 using (SqlDataReader dr = await cmd.ExecuteReaderAsync())
                 {
                     while (dr.Read())
                     {
-                        rating.MovieId = Convert.ToInt32(dr["MovieId"].ToString());
-                        rating.Rating = Convert.ToInt32(dr["Rating"].ToString());
-                        rating.Id = id;
+                       role.Id = id;
+                       role.Name = dr["RoleName"].ToString();
+                       role.MovieId = Convert.ToInt32(dr["MovieID"].ToString());
+                       role.ActorId = Convert.ToInt32(dr["ActorID"].ToString());
                     }
                 }
 
             }
 
-            return rating;
+            return role;
         }
 
-        public async Task<List<RatingModel>> GetRatingsAsync()
+        public async Task<List<RoleOut>> GetRolesAsync()
         {
-            string sql = "SELECT * FROM ratings";
-            var ratings = new List<RatingModel>();
+            string sql = "SELECT * FROM roles";
+            var roles = new List<RoleOut>();
 
             using (SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
             using (SqlCommand cmd = new SqlCommand(sql, cnn))
             {
                 cnn.Open();
 
-                using (SqlDataReader dr = await cmd.ExecuteReaderAsync(CommandBehavior.CloseConnection))
+                using (SqlDataReader dr = await cmd.ExecuteReaderAsync())
                 {
                     while (dr.Read())
                     {
-                        ratings.Add(new RatingModel
+                        roles.Add(new RoleOut
                         {
                             Id = Convert.ToInt32(dr["ID"].ToString()),
-                            MovieId = Convert.ToInt32(dr["MovieId"].ToString()),
-                            Rating = Convert.ToInt32(dr["Rating"].ToString())
+                            Name = dr["RoleName"].ToString(),
+                            MovieId = Convert.ToInt32(dr["MovieID"].ToString()),
+                            ActorId = Convert.ToInt32(dr["ActorID"].ToString()),
                         });
                     }
                 }
 
             }
 
-            return ratings;
+            return roles;
         }
 
-        public async Task UpdateRatingAsync(int id, RatingModel rating)
+        public async Task UpdateRoleAsync(int id, RoleUpdateIn role)
         {
-            string sql = "UPDATE ratings SET MovieId=@MovieID,Rating=@Rating WHERE ID=@RatingID";
+            string sql = "UPDATE roles SET RoleName=@RoleName,ActorID=@ActorId,MovieID=@MovieId WHERE ID=@RoleId";
 
-            using(SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
-            using(SqlCommand cmd = new SqlCommand(sql, cnn))
+            using (SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
+            using (SqlCommand cmd = new SqlCommand(sql, cnn))
             {
                 cnn.Open();
 
-                cmd.Parameters.Add(new SqlParameter("@MovieId",rating.MovieId));
-                cmd.Parameters.Add(new SqlParameter("@Rating",rating.Rating));
-                cmd.Parameters.Add(new SqlParameter("@RatingID",id));
+                cmd.Parameters.Add(new SqlParameter("@MovieId", role.MovieId));
+                cmd.Parameters.Add(new SqlParameter("@ActorId", role.ActorId));
+                cmd.Parameters.Add(new SqlParameter("@RoleName", role.Name));
+                cmd.Parameters.Add(new SqlParameter("@RoleId", id));
+              
 
                 cmd.CommandType = CommandType.Text;
 
                 int rows = await cmd.ExecuteNonQueryAsync();
 
-                if(rows == 0)
+                if (rows == 0)
                 {
                     throw new Exception("No row affected.");
                 }

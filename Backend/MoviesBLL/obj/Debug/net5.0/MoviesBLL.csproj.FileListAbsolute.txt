@@ -31,3 +31,4 @@ C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.csproj.C
 C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.dll
 C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\ref\MoviesBLL.dll
 C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.pdb
+C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.csproj.CopyComplete

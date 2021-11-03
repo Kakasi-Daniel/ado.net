@@ -16,6 +16,7 @@ namespace MoviesDAL
             services.AddTransient<IMoviesRepository, MoviesRepository>();
             services.AddTransient<IActorsRepository, ActorsRepository>();
             services.AddTransient<IRatingsRepository, RatingsRepository>();
+            services.AddTransient<IRolesRepository, RolesRepository>();
         }
     }
 }
