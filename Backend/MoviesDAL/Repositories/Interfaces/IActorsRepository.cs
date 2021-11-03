@@ -12,7 +12,8 @@ namespace MoviesDAL.Repositories.Interfaces
         Task<List<ActorModel>> GetActorsAsync(); 
         Task<ActorModel> GetActorAsync(int id);
         Task<int> PostActorAsync(ActorModel actor);
-        Task DeleteActorAsync(int id);
+        Task<int> DeleteActorAsync(int id);
+        Task UpdateActorAsync(int id, ActorModel actor);
 
 
     }

@@ -8,9 +8,9 @@ namespace MoviesBLL
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            services.AddScoped<ReportsService>();
             services.AddScoped<MoviesService>();
             services.AddScoped<ActorsService>();
+            services.AddScoped<RatingsService>();
 
             MoviesDAL.Configuration.RegisterServices(services);
         }

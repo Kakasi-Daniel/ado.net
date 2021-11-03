@@ -28,7 +28,6 @@ C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.Generate
 C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.AssemblyInfoInputs.cache
 C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.AssemblyInfo.cs
 C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.csproj.CoreCompileInputs.cache
-C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.csproj.CopyComplete
 C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.dll
 C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\ref\MoviesBLL.dll
 C:\Projects\MoviesExercise\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.pdb

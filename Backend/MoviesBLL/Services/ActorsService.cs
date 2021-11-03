@@ -32,5 +32,22 @@ namespace MoviesBLL.Services
         {
             return await actorsRepo.GetActorsAsync();
         }
+
+        public async Task DeleteActorAsync(int id)
+        {
+            int rows = await actorsRepo.DeleteActorAsync(id);
+
+            if(rows == 0)
+            {
+                throw new Exception("Failed to delete Actor, make sure id is correct.");
+            }
+        } 
+        
+        public async Task UpdateActorAsync(int id,ActorModel actor)
+        {
+            await actorsRepo.UpdateActorAsync(id, actor);
+        }
+
+
     }
 }

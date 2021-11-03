@@ -20,7 +20,7 @@ namespace MoviesAPI.Controllers
             this.actorsService = actorsService;
         }
 
-        
+
 
         [HttpGet]
         public async Task<ActionResult<List<ActorModel>>> GetActors()
@@ -28,7 +28,7 @@ namespace MoviesAPI.Controllers
             return await actorsService.GetActorsAsync();
         }
 
-         [HttpGet("{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetActorByID(int id)
         {
             var actor = await actorsService.GetActorByIDAsync(id);
@@ -43,5 +43,20 @@ namespace MoviesAPI.Controllers
             actor.ID = id;
             return Ok(actor);
         }
+
+        [HttpDelete]
+        public async Task DeleteActor(int id)
+        {
+            await actorsService.DeleteActorAsync(id);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ActorModel>> UpdateActor([FromRoute] int id, [FromBody] ActorModel actor)
+        {
+            await actorsService.UpdateActorAsync(id, actor);
+            return await actorsService.GetActorByIDAsync(id);
+
+        }
+
     }
 }

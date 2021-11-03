@@ -82,15 +82,16 @@ namespace MoviesDAL.Repositories
 
                     while (dr.Read())
                     {
-                        var movie = new MovieModel();
-
-                        movie.Name = dr["Name"].ToString();
-                        movie.ReleaseDate = Convert.ToDateTime(dr["ReleaseDate"]);
-                        movie.Id = (int)dr["ID"];
+                        var movie = new MovieModel { 
+                        Name = dr["Name"].ToString(),
+                        ReleaseDate = Convert.ToDateTime(dr["ReleaseDate"]),
+                        Id = (int)dr["ID"]
+                        };
 
                         Movies.Add(movie);
+
                     }
-                    
+
                 }
             }
 

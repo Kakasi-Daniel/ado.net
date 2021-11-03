@@ -12,9 +12,21 @@ namespace MoviesDAL.Repositories
 {
     class ActorsRepository : IActorsRepository
     {
-        public Task DeleteActorAsync(int id)
+        public async Task<int> DeleteActorAsync(int id)
         {
-            throw new NotImplementedException();
+            string sql = "DELETE FROM actors WHERE ID=@ActorId";
+            int rows = 0;
+
+            using(SqlConnection cnn= new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
+            using (SqlCommand cmd = new SqlCommand(sql, cnn))
+            {
+                cnn.Open();
+                cmd.Parameters.Add(new SqlParameter("@ActorId", id));
+                cmd.CommandType = CommandType.Text;
+                rows = await cmd.ExecuteNonQueryAsync();
+            }
+
+            return rows;
         }
 
         public async Task<ActorModel> GetActorAsync(int id)
@@ -100,6 +112,33 @@ namespace MoviesDAL.Repositories
             }
 
             return insertedId;
+        }
+
+        public async Task UpdateActorAsync(int id, ActorModel actor)
+        {
+            string sql = "UPDATE actors SET Name=@ActorName, Surname=@ActorSurname, BornDate=@ActorBornDate WHERE ID=@ActorId;";
+
+            using(SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
+            using(SqlCommand cmd = new SqlCommand(sql, cnn))
+            {
+                cnn.Open();
+
+                try
+                {
+                    cmd.Parameters.Add(new SqlParameter("@ActorId", id));
+                    cmd.Parameters.Add(new SqlParameter("@ActorName", actor.Name));
+                    cmd.Parameters.Add(new SqlParameter("@ActorSurname", actor.Surname));
+                    cmd.Parameters.Add(new SqlParameter("@ActorBornDate", actor.BornDate));
+
+                    cmd.CommandType = CommandType.Text;
+
+                    await cmd.ExecuteNonQueryAsync();
+
+                }catch(Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
         }
     }
 }
