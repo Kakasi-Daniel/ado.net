@@ -120,9 +120,6 @@ namespace MoviesDAL.Repositories
         {
 
             int rows = 0;
-            string nameUpdater = movie.Name != null ? "Name = @MovieName" : "";
-            string dateUpdater = movie.ReleaseDate != DateTime.MinValue ? "ReleaseDate = @MovieReleaseDate" : "";
-            string comma = (nameUpdater != "" && dateUpdater != "") ? "," : "";
             string sqlQuery = @$"UPDATE movies SET 
                                     Name = @MovieName,
                                     ReleaseDate = @MovieReleaseDate
@@ -135,14 +132,12 @@ namespace MoviesDAL.Repositories
 
                 cmd.Parameters.Add(new SqlParameter("@MovieID", movieID));
 
-                if (nameUpdater != "")
-                {
+               
                     cmd.Parameters.Add(new SqlParameter("@MovieName", movie.Name));
-                }
-                if(dateUpdater != "")
-                {
+                
+               
                     cmd.Parameters.Add(new SqlParameter("@MovieReleaseDate", movie.ReleaseDate));
-                }
+                
 
                 cmd.CommandType = CommandType.Text;
                rows =  await cmd.ExecuteNonQueryAsync();

@@ -78,4 +78,7 @@ C:\Projects\MoviesExercise\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.dll
 C:\Projects\MoviesExercise\Backend\MoviesAPI\obj\Debug\net5.0\ref\MoviesAPI.dll
 C:\Projects\MoviesExercise\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.pdb
 C:\Projects\MoviesExercise\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.genruntimeconfig.cache
+C:\Projects\MoviesExercise\Backend\MoviesAPI\bin\Debug\net5.0\AutoMapper.dll
+C:\Projects\MoviesExercise\Backend\MoviesAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Projects\MoviesExercise\Backend\MoviesAPI\bin\Debug\net5.0\Dapper.dll
 C:\Projects\MoviesExercise\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.csproj.CopyComplete

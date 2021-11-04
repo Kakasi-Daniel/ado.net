@@ -21,3 +21,4 @@ C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.
 C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.dll
 C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\ref\MoviesLibrary.dll
 C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.pdb
+C:\Projects\MoviesExercise\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.csproj.AssemblyReference.cache

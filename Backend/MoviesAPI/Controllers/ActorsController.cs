@@ -44,11 +44,7 @@ namespace MoviesAPI.Controllers
             return Ok(actor);
         }
 
-        [HttpDelete]
-        public async Task DeleteActor(int id)
-        {
-            await actorsService.DeleteActorAsync(id);
-        }
+       
 
         [HttpPut("{id}")]
         public async Task<ActionResult<ActorModel>> UpdateActor([FromRoute] int id, [FromBody] ActorModel actor)
@@ -56,6 +52,12 @@ namespace MoviesAPI.Controllers
             await actorsService.UpdateActorAsync(id, actor);
             return await actorsService.GetActorByIDAsync(id);
 
+        }
+
+        [HttpDelete]
+        public async Task DeleteActor(int id)
+        {
+            await actorsService.DeleteActorAsync(id);
         }
 
     }

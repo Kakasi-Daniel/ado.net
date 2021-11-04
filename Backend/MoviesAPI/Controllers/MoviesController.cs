@@ -34,7 +34,7 @@ namespace MoviesAPI.Controllers
         {
             MovieModel movie = await movieService.GetMovieAsync(id);
 
-            return movie.Name == null ? NotFound() : Ok(movie); 
+            return movie == null ? NotFound() : Ok(movie); 
         }
 
 
@@ -42,19 +42,11 @@ namespace MoviesAPI.Controllers
         public async Task<IActionResult> PostMovie([FromBody]MovieModel movie)
         {
             int id = await movieService.PostMovieAsync(movie);
-            movie.Id = id;
-            return Ok(movie);
+            return await GetMovieID(id);
             
         }
         
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMovie(int id)
-        {
-            int rows = await movieService.DeleteMovieByIdAsync(id);
-
-            return rows == 0 ? NotFound() : Ok();
-            
-        }
+       
 
         [HttpPut("{id}")]
         public async Task<ActionResult<MovieModel>> UpdateMovie([FromRoute]int id,[FromBody] MovieModel movie)
@@ -65,6 +57,15 @@ namespace MoviesAPI.Controllers
 
         }
 
-        
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMovie(int id)
+        {
+            int rows = await movieService.DeleteMovieByIdAsync(id);
+
+            return rows == 0 ? NotFound() : Ok();
+
+        }
+
+
     }
 }

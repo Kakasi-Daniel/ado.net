@@ -1,5 +1,6 @@
 ﻿using MoviesDAL.Repositories.Interfaces;
 using MoviesLibrary.DTOs;
+using MoviesLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,7 +13,7 @@ namespace MoviesDAL.Repositories
 {
     public class RolesRepository : IRolesRepository
     {
-        public async Task<int> AddRoleAsync(RoleAddIn role)
+        public async Task<int> AddRoleAsync(RoleModel role)
         {
             string sqlQuerry = @"insert into roles(RoleName,ActorID,MovieID) values(@RoleName,@ActorID,@MovieID)
                                  SELECT SCOPE_IDENTITY()";
@@ -50,10 +51,10 @@ namespace MoviesDAL.Repositories
             }
         }
 
-        public async Task<RoleOut> GetRoleByIdAsync(int id)
+        public async Task<RoleModel> GetRoleByIdAsync(int id)
         {
             string sql = "SELECT * FROM roles WHERE ID=@RoleID";
-            var role = new RoleOut();
+            var role = new RoleModel();
 
             using (SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
             using (SqlCommand cmd = new SqlCommand(sql, cnn))
@@ -77,10 +78,10 @@ namespace MoviesDAL.Repositories
             return role;
         }
 
-        public async Task<List<RoleOut>> GetRolesAsync()
+        public async Task<List<RoleModel>> GetRolesAsync()
         {
             string sql = "SELECT * FROM roles";
-            var roles = new List<RoleOut>();
+            var roles = new List<RoleModel>();
 
             using (SqlConnection cnn = new SqlConnection("Server=localhost;Database=Movies;Trusted_Connection=True;"))
             using (SqlCommand cmd = new SqlCommand(sql, cnn))
@@ -91,7 +92,7 @@ namespace MoviesDAL.Repositories
                 {
                     while (dr.Read())
                     {
-                        roles.Add(new RoleOut
+                        roles.Add(new RoleModel
                         {
                             Id = Convert.ToInt32(dr["ID"].ToString()),
                             Name = dr["RoleName"].ToString(),
@@ -106,7 +107,7 @@ namespace MoviesDAL.Repositories
             return roles;
         }
 
-        public async Task UpdateRoleAsync(int id, RoleUpdateIn role)
+        public async Task UpdateRoleAsync(int id, RoleModel role)
         {
             string sql = "UPDATE roles SET RoleName=@RoleName,ActorID=@ActorId,MovieID=@MovieId WHERE ID=@RoleId";
 

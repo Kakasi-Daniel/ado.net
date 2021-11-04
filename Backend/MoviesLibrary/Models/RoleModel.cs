@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MoviesLibrary.Models
 {
-    class RoleModel
+    public class RoleModel
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int ActorId { get; set; }
+        public int MovieId { get; set; }
     }
 }
