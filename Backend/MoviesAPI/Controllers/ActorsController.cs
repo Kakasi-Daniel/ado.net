@@ -29,19 +29,18 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetActorByID(int id)
+        public async Task<ActionResult<ActorModel>> GetActorByID(int id)
         {
             var actor = await actorsService.GetActorByIDAsync(id);
 
-            return actor.Name != null ? Ok(actor) : NotFound();
+            return actor != null ? Ok(actor) : NotFound();
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostActor([FromBody] ActorModel actor)
+        public async Task<ActionResult<ActorModel>> PostActor([FromBody] ActorModel actor)
         {
             int id = await actorsService.PostActorAsync(actor);
-            actor.ID = id;
-            return Ok(actor);
+            return await GetActorByID(id);
         }
 
        

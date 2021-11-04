@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "yk28OIlifBvLsNnum0MAhhXgv3SMcMSMN8HLz1mzzZsv6shrOUcyKQWxw934VbaCZcbktNvoCYrqZP66FMBrcg==",
+  "dgSpecHash": "Sti+8iiP9CqBwnEktdLrnaerA2304uvvqFqTGBRLT4iPjfnRRLnMmb9pJN9CnbmZXMFghHfIR4CRjtQMJpAsXw==",
   "success": true,
   "projectFilePath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesDAL\\MoviesDAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\KakasiDaniel\\.nuget\\packages\\dapper.contrib\\2.0.78\\dapper.contrib.2.0.78.nupkg.sha512",
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\KakasiDaniel\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\KakasiDaniel\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",

@@ -10,42 +10,37 @@ namespace MoviesBLL.Services
 {
     public class ActorsService
     {
-        private readonly IActorsRepository actorsRepo;
+        private readonly IRepository<ActorModel> actorsRepo;
 
-        public ActorsService(IActorsRepository actorsRepo)
+        public ActorsService(IRepository<ActorModel> actorsRepo)
         {
             this.actorsRepo = actorsRepo;
         }
 
         public async Task<int> PostActorAsync(ActorModel actor)
         {
-           return await actorsRepo.PostActorAsync(actor);
+           return await actorsRepo.AddAsync(actor);
         }
         
         
         public async Task<ActorModel> GetActorByIDAsync(int id)
         {
-            return await actorsRepo.GetActorAsync(id);
+            return await actorsRepo.GetByIdAsync(id);
         }
         
         public async Task<List<ActorModel>> GetActorsAsync()
         {
-            return await actorsRepo.GetActorsAsync();
+            return await actorsRepo.GetAsync();
         }
 
         public async Task DeleteActorAsync(int id)
         {
-            int rows = await actorsRepo.DeleteActorAsync(id);
+            await actorsRepo.DeleteAsync(id);
+        }
 
-            if(rows == 0)
-            {
-                throw new Exception("Failed to delete Actor, make sure id is correct.");
-            }
-        } 
-        
-        public async Task UpdateActorAsync(int id,ActorModel actor)
+        public async Task UpdateActorAsync(int id, ActorModel actor)
         {
-            await actorsRepo.UpdateActorAsync(id, actor);
+            await actorsRepo.UpdateAsync(id, actor);
         }
 
 

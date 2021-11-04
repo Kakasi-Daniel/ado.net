@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MoviesLibrary.Models
 {
-    public class MovieModel
+    [Table("Movies")]
+    public class MovieModel : BaseModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
     }

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MoviesDAL.Repositories;
 using MoviesDAL.Repositories.Interfaces;
+using MoviesLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,8 @@ namespace MoviesAPI
             MoviesBLL.Configuration.RegisterServices(services);
 
             services.AddAutoMapper(typeof(Startup));
+
+            services.Configure<AppConfig>(Configuration.GetSection("AppConfig"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

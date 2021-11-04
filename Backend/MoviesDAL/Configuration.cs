@@ -13,10 +13,7 @@ namespace MoviesDAL
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            services.AddTransient<IMoviesRepository, DapperMoviesRepository>();
-            services.AddTransient<IActorsRepository, ActorsRepository>();
-            services.AddTransient<IRatingsRepository, RatingsRepository>();
-            services.AddTransient<IRolesRepository, RolesRepository>();
+            services.AddScoped(typeof(IRepository<>), typeof(GenericDapperRepository<>));
         }
     }
 }

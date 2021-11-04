@@ -11,37 +11,37 @@ namespace MoviesBLL.Services
 {
     public class RatingsService
     {
-        private readonly IRatingsRepository ratingsService;
+        private readonly IRepository<RatingModel> ratingRepos;
 
-        public RatingsService(IRatingsRepository ratingsService)
+        public RatingsService(IRepository<RatingModel> ratingRepos)
         {
-            this.ratingsService = ratingsService;
+            this.ratingRepos = ratingRepos;
         }
 
 
         public async Task<List<RatingModel>> GetRatingsAsync()
         {
-            return await ratingsService.GetRatingsAsync();
+            return await ratingRepos.GetAsync();
         } 
         
         public async Task<RatingModel> GetRatingAsync(int id)
         {
-            return await ratingsService.GetRatingByIdAsync(id);
+            return await ratingRepos.GetByIdAsync(id);
         }
         
         public async Task<int> AddRatingAsync(RatingModel rating)
         {
-            return await ratingsService.AddRatingAsync(rating);
+            return await ratingRepos.AddAsync(rating);
         }
          
         public async Task UpdateRatingAsync(int id,RatingModel rating)
         {
-            await ratingsService.UpdateRatingAsync(id,rating);
+            await ratingRepos.UpdateAsync(id,rating);
         }
         
         public async Task DeleteRatingAsync(int id)
         {
-            await ratingsService.DeleteRatingAsync(id);
+            await ratingRepos.DeleteAsync(id);
         }
 
         

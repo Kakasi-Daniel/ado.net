@@ -31,7 +31,7 @@ namespace MoviesAPI.Controllers
         {
             var role = await roleService.GetRoleByIdAsync(id);
 
-            return role.Name != null ? Ok(role) : NotFound();
+            return role != null ? Ok(role) : NotFound();
         }
 
         [HttpPost]
