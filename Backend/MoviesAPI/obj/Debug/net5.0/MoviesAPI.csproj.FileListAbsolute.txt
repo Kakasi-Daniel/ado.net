@@ -128,3 +128,8 @@ C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.dll
 C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\ref\MoviesAPI.dll
 C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.pdb
 C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.genruntimeconfig.cache
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesAPI\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesAPI\bin\Debug\net5.0\Dapper.dll
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesAPI\bin\Debug\net5.0\Dapper.Contrib.dll
+C:\Users\kakas\Desktop\ado.net\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.csproj.CopyComplete

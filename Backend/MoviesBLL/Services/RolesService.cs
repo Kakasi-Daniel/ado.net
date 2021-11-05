@@ -38,6 +38,7 @@ namespace MoviesBLL.Services
             var actor = await actorsRepo.GetByIdAsync(roleWithNames.ActorId);
             roleWithNames.MovieName = movie.Name;
             roleWithNames.ActorName = actor.Name;
+            roleWithNames.ActorName += " " + actor.Surname;
 
             return roleWithNames;
         }
