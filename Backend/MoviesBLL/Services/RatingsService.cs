@@ -1,10 +1,9 @@
-﻿using MoviesDAL.Repositories;
+﻿using AutoMapper;
 using MoviesDAL.Repositories.Interfaces;
+using MoviesLibrary.DTOs;
 using MoviesLibrary.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MoviesBLL.Services
@@ -12,31 +11,35 @@ namespace MoviesBLL.Services
     public class RatingsService
     {
         private readonly IRepository<RatingModel> ratingRepos;
+        private readonly IMapper mapper;
 
-        public RatingsService(IRepository<RatingModel> ratingRepos)
+        public RatingsService(IRepository<RatingModel> ratingRepos,IMapper mapper)
         {
             this.ratingRepos = ratingRepos;
+            this.mapper = mapper;
         }
 
 
-        public async Task<List<RatingModel>> GetRatingsAsync()
+        public async Task<List<RatingOut>> GetRatingsAsync()
         {
-            return await ratingRepos.GetAsync();
+            var ratings = await ratingRepos.GetAsync();
+
+            return ratings.Select(mapper.Map<RatingOut>).ToList();
         } 
         
-        public async Task<RatingModel> GetRatingAsync(int id)
+        public async Task<RatingOut> GetRatingAsync(int id)
         {
-            return await ratingRepos.GetByIdAsync(id);
+            return mapper.Map<RatingOut>(await ratingRepos.GetByIdAsync(id));
         }
         
-        public async Task<int> AddRatingAsync(RatingModel rating)
+        public async Task<int> AddRatingAsync(RatingIn rating)
         {
-            return await ratingRepos.AddAsync(rating);
+            return await ratingRepos.AddAsync(mapper.Map<RatingModel>(rating));
         }
          
-        public async Task UpdateRatingAsync(int id,RatingModel rating)
+        public async Task UpdateRatingAsync(int id,RatingIn rating)
         {
-            await ratingRepos.UpdateAsync(id,rating);
+            await ratingRepos.UpdateAsync(id,mapper.Map<RatingModel>(rating));
         }
         
         public async Task DeleteRatingAsync(int id)

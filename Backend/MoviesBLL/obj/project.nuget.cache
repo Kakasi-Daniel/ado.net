@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QwtmVBrE1sKGth2jpptB6UsmffJWBZHGlUqlUF2Zp2U0g/w3cTPyUEfpPX3HoEMbX1JgIRdhCDtsuuBYqo/riw==",
+  "dgSpecHash": "GnIpScDF9BxKVgDuhdxWWpO1wQ8G1z8KGEmOr6PSCW4EZ6X15fUxhuaYIVXD843awAs02kdPCQC/By6g0ES+Aw==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesBLL\\MoviesBLL.csproj",
+  "projectFilePath": "C:\\Projects\\MoviesApp\\Backend\\MoviesBLL\\MoviesBLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Sti+8iiP9CqBwnEktdLrnaerA2304uvvqFqTGBRLT4iPjfnRRLnMmb9pJN9CnbmZXMFghHfIR4CRjtQMJpAsXw==",
+  "dgSpecHash": "xzv1JeoEWOepv1kmc/1X0EYCtkPw+/VbO2SVZbVA/6xATNnW8V29hWixLSHyMt/MHlsceHPNEpenSQ1t2mFh/Q==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesDAL\\MoviesDAL.csproj",
+  "projectFilePath": "C:\\Projects\\MoviesApp\\Backend\\MoviesDAL\\MoviesDAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\dapper.contrib\\2.0.78\\dapper.contrib.2.0.78.nupkg.sha512",

@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MoviesBLL.Services;
-using MoviesDAL.Repositories.Interfaces;
+using MoviesLibrary.DTOs;
 using MoviesLibrary.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MoviesAPI.Controllers
@@ -22,24 +19,32 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<MovieModel>>> GetAllMovies()
+        public async Task<ActionResult<List<MovieOut>>> GetAllMovies()
         {
-            List<MovieModel> movieNames = await movieService.GetMovieListAsync();
+            var movies = await movieService.GetMovieListAsync();
 
-            return movieNames;
+            return movies;
+        }
+
+        [HttpGet("actor/{id}")]
+        public async Task<ActionResult<List<MovieOut>>> GetByActor(int id)
+        {
+            var movies = await movieService.GetMoviesByActorId(id);
+
+            return movies;
         }
         
         [HttpGet("{id}")]
-        public async Task<ActionResult<MovieModel>> GetMovieID(int id)
+        public async Task<ActionResult<MovieOut>> GetMovieID(int id)
         {
-            MovieModel movie = await movieService.GetMovieAsync(id);
+            var movie = await movieService.GetMovieAsync(id);
 
             return movie == null ? NotFound() : Ok(movie); 
         }
 
 
         [HttpPost]
-        public async Task<ActionResult<MovieModel>> PostMovie([FromBody]MovieModel movie)
+        public async Task<ActionResult<MovieOut>> PostMovie([FromBody]MovieIn movie)
         {
             int id = await movieService.PostMovieAsync(movie);
             return await GetMovieID(id);
@@ -49,7 +54,7 @@ namespace MoviesAPI.Controllers
        
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<MovieModel>> UpdateMovie([FromRoute]int id,[FromBody] MovieModel movie)
+        public async Task<ActionResult<MovieOut>> UpdateMovie([FromRoute]int id,[FromBody] MovieIn movie)
         {
             await movieService.UpdateMovieAsync(id, movie);
 

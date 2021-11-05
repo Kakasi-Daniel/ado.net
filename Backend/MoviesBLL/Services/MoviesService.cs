@@ -1,33 +1,45 @@
-﻿using MoviesDAL.Repositories.Interfaces;
+﻿using AutoMapper;
+using MoviesDAL.Repositories.Interfaces;
+using MoviesLibrary.DTOs;
 using MoviesLibrary.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MoviesBLL.Services
 {
-   public class MoviesService
+    public class MoviesService
     {
-        private readonly IRepository<MovieModel> movieRepo;
+        private readonly IMoviesRepository movieRepo;
+        private readonly IMapper mapper;
 
-        public MoviesService(IRepository<MovieModel> movieRepo)
+        public MoviesService(IMoviesRepository movieRepo,IMapper mapper)
         {
             this.movieRepo = movieRepo;
+            this.mapper = mapper;
         }
-        public async Task<List<MovieModel>> GetMovieListAsync()
+
+        public async Task<List<MovieOut>> GetMoviesByActorId(int id)
         {
-            return await movieRepo.GetAsync();
+            var movies = await movieRepo.GetByActorId(id);
+
+            return movies.Select(mapper.Map<MovieOut>).ToList();
         }
-         public async Task<int> PostMovieAsync(MovieModel movie)
+
+        public async Task<List<MovieOut>> GetMovieListAsync()
         {
-           return await movieRepo.AddAsync(movie);
+            var movies = await movieRepo.GetAsync();
+
+            return movies.Select(mapper.Map<MovieOut>).ToList();
+        }
+         public async Task<int> PostMovieAsync(MovieIn movie)
+        {
+           return await movieRepo.AddAsync(mapper.Map<MovieModel>(movie));
         } 
         
-        public async Task<MovieModel> GetMovieAsync(int movieID)
+        public async Task<MovieOut> GetMovieAsync(int movieID)
         {
-            return await movieRepo.GetByIdAsync(movieID);
+            return mapper.Map<MovieOut>(await movieRepo.GetByIdAsync(movieID));
         }
 
         public async Task DeleteMovieByIdAsync(int movieID)
@@ -35,11 +47,9 @@ namespace MoviesBLL.Services
             await movieRepo.DeleteAsync(movieID);
         } 
 
-        public async Task UpdateMovieAsync(int movieId,MovieModel movie)
+        public async Task UpdateMovieAsync(int movieId,MovieIn movie)
         {
-            
-            await movieRepo.UpdateAsync(movieId, movie);
- 
+            await movieRepo.UpdateAsync(movieId, mapper.Map<MovieModel>(movie));
         }
         
        

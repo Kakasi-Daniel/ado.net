@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MoviesBLL.Services;
+using MoviesLibrary.DTOs;
 using MoviesLibrary.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MoviesAPI.Controllers
@@ -21,13 +19,13 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<RatingModel>>> GetRatings()
+        public async Task<ActionResult<List<RatingOut>>> GetRatings()
         {
             return await ratings.GetRatingsAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<RatingModel>> GetRating([FromRoute] int id)
+        public async Task<ActionResult<RatingOut>> GetRating([FromRoute] int id)
         {   
             var rating = await ratings.GetRatingAsync(id);
 
@@ -35,7 +33,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<RatingModel>> AddRating([FromBody] RatingModel rating)
+        public async Task<ActionResult<RatingOut>> AddRating([FromBody] RatingIn rating)
         {
             int id = await ratings.AddRatingAsync(rating);
 
@@ -43,7 +41,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<RatingModel>> UpdateRating([FromRoute] int id, [FromBody] RatingModel rating)
+        public async Task<ActionResult<RatingOut>> UpdateRating([FromRoute] int id, [FromBody] RatingIn rating)
         {
             await ratings.UpdateRatingAsync(id, rating);
 

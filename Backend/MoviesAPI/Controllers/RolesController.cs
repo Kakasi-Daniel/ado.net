@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MoviesBLL.Services;
 using MoviesLibrary.DTOs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MoviesAPI.Controllers
@@ -27,7 +24,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<RoleOut>> GetRole([FromRoute] int id)
+        public async Task<ActionResult<RoleOutWithNames>> GetRole([FromRoute] int id)
         {
             var role = await roleService.GetRoleByIdAsync(id);
 
@@ -35,7 +32,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<RoleOut>> AddRole([FromBody] RoleAddIn role)
+        public async Task<ActionResult<RoleOutWithNames>> AddRole([FromBody] RoleIn role)
         {
             int id = await roleService.AddRoleAsync(role);
 
@@ -43,7 +40,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<RoleOut>> UpdateRating([FromRoute] int id, [FromBody] RoleUpdateIn role)
+        public async Task<ActionResult<RoleOutWithNames>> UpdateRating([FromRoute] int id, [FromBody] RoleIn role)
         {
             await roleService.UpdateRoleAsync(id, role);
 

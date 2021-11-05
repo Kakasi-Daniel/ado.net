@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7OUM8spNklKqS5a5DGfgJpzlmf/r1rMbocsQJ8zZ7qSuKmKZrGaOQUnZFIR8aNeiPsx4WZos13SpzeuH1KDnAQ==",
+  "dgSpecHash": "EQX2+d8SKvFzF08jOopWIwywRh4rAFpzcfvP3sG192+2rxdA1JGa+bWYayAx3/IPKNjR06o1bpXzK+YeEf/Zhw==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesAPI\\MoviesAPI.csproj",
+  "projectFilePath": "C:\\Projects\\MoviesApp\\Backend\\MoviesAPI\\MoviesAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\KakasiDaniel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

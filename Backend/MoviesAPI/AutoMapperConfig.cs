@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using MoviesLibrary.DTOs;
 using MoviesLibrary.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MoviesAPI
 {
@@ -12,9 +8,17 @@ namespace MoviesAPI
     {
         public AutoMapperConfig()
         {
-            CreateMap<RoleModel, RoleOut>().ReverseMap();
-            CreateMap<RoleModel, RoleAddIn>().ReverseMap();
-            CreateMap<RoleModel, RoleUpdateIn>().ReverseMap();
+            CreateMap<RoleOut, RoleOutWithNames>();
+            CreateMap<RoleModel, RoleOutWithNames>();
+            CreateMap<RoleModel, RoleOut>();
+            CreateMap<RoleIn,RoleModel >();
+            CreateMap<MovieModel, MovieOut>();
+            CreateMap<MovieIn,MovieModel >();
+            CreateMap<ActorModel, ActorOut>();
+            CreateMap<ActorIn,ActorModel >();
+            CreateMap<ActorModel,ActorsRolesOut>();
+            CreateMap<RatingModel, RatingOut>();
+            CreateMap<RatingIn,RatingModel >();
         }
     }
 }

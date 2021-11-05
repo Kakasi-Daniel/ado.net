@@ -1050,11 +1050,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\MoviesExercise\\Backend\\MoviesAPI\\MoviesAPI.csproj",
+      "projectUniqueName": "C:\\Projects\\MoviesApp\\Backend\\MoviesAPI\\MoviesAPI.csproj",
       "projectName": "MoviesAPI",
-      "projectPath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesAPI\\MoviesAPI.csproj",
+      "projectPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesAPI\\MoviesAPI.csproj",
       "packagesPath": "C:\\Users\\KakasiDaniel\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesAPI\\obj\\",
+      "outputPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KakasiDaniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1071,11 +1071,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Projects\\MoviesExercise\\Backend\\MoviesBLL\\MoviesBLL.csproj": {
-              "projectPath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesBLL\\MoviesBLL.csproj"
+            "C:\\Projects\\MoviesApp\\Backend\\MoviesBLL\\MoviesBLL.csproj": {
+              "projectPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesBLL\\MoviesBLL.csproj"
             },
-            "C:\\Projects\\MoviesExercise\\Backend\\MoviesLibrary\\MoviesLibrary.csproj": {
-              "projectPath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesLibrary\\MoviesLibrary.csproj"
+            "C:\\Projects\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj": {
+              "projectPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj"
             }
           }
         }

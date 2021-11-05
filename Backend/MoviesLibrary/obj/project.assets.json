@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\MoviesExercise\\Backend\\MoviesLibrary\\MoviesLibrary.csproj",
+      "projectUniqueName": "C:\\Projects\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj",
       "projectName": "MoviesLibrary",
-      "projectPath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesLibrary\\MoviesLibrary.csproj",
+      "projectPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj",
       "packagesPath": "C:\\Users\\KakasiDaniel\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\MoviesExercise\\Backend\\MoviesLibrary\\obj\\",
+      "outputPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KakasiDaniel\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -2,10 +2,8 @@
 using MoviesDAL.Repositories.Interfaces;
 using MoviesLibrary.DTOs;
 using MoviesLibrary.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MoviesBLL.Services
@@ -13,11 +11,15 @@ namespace MoviesBLL.Services
     public class RolesService
     {
         private readonly IRepository<RoleModel> rolesRepo;
+        private readonly IRepository<ActorModel> actorsRepo;
+        private readonly IRepository<MovieModel> moviesRepo;
         private readonly IMapper mapper;
 
-        public RolesService(IRepository<RoleModel> rolesRepo,IMapper mapper)
+        public RolesService(IRepository<RoleModel> rolesRepo, IRepository<ActorModel> actorsRepo, IRepository<MovieModel> moviesRepo, IMapper mapper)
         {
             this.rolesRepo = rolesRepo;
+            this.actorsRepo = actorsRepo;
+            this.moviesRepo = moviesRepo;
             this.mapper = mapper;
         }
 
@@ -28,12 +30,19 @@ namespace MoviesBLL.Services
             return roles.Select(mapper.Map<RoleOut>).ToList();
         }
         
-        public async Task<RoleOut> GetRoleByIdAsync(int id)
+        public async Task<RoleOutWithNames> GetRoleByIdAsync(int id)
         {
-            return mapper.Map<RoleOut>(await rolesRepo.GetByIdAsync(id));
+            var role = mapper.Map<RoleOut>(await rolesRepo.GetByIdAsync(id));
+            var roleWithNames = mapper.Map<RoleOutWithNames>(role);
+            var movie = await moviesRepo.GetByIdAsync(roleWithNames.MovieId);
+            var actor = await actorsRepo.GetByIdAsync(roleWithNames.ActorId);
+            roleWithNames.MovieName = movie.Name;
+            roleWithNames.ActorName = actor.Name;
+
+            return roleWithNames;
         }
         
-        public async Task<int> AddRoleAsync(RoleAddIn role)
+        public async Task<int> AddRoleAsync(RoleIn role)
         {
             return await rolesRepo.AddAsync(mapper.Map<RoleModel>(role));
         }
@@ -43,7 +52,7 @@ namespace MoviesBLL.Services
             await rolesRepo.DeleteAsync(id);
         }
         
-        public async Task UpdateRoleAsync(int id,RoleUpdateIn role)
+        public async Task UpdateRoleAsync(int id,RoleIn role)
         {
             await rolesRepo.UpdateAsync(id, mapper.Map<RoleModel>(role));
         }

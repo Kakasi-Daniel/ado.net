@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MoviesBLL.Services;
-using System.Data.SqlClient;
 
 namespace MoviesBLL
 {
