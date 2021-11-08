@@ -31,6 +31,9 @@ namespace MoviesAPI
             services.AddAutoMapper(typeof(Startup));
 
             services.Configure<AppConfig>(Configuration.GetSection("AppConfig"));
+
+            services.AddCors();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +49,10 @@ namespace MoviesAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(
+       options => options.WithOrigins("http://127.0.0.1:5500").AllowAnyMethod().AllowAnyHeader()
+   ); ;
 
             app.UseAuthorization();
 

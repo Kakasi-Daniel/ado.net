@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+    <title>Proiect smecher</title>
+  </head>
+  <body>
+    <div class="Container">
+      <div class="tableContainer">
+        <h2 class="alignCenter">Movies table</h2>
+        <table class="moviesTable">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Release Date</th>
+            <th>Actions</th>
+          </tr>
+        </table>
+      </div>
+      <div class="formContainer">
+        <h2 class="alignCenter state">Add movie</h2>
+        <form class="moviesForm">
+          <label for="movieName">
+            Movie Name:
+            <input
+              type="text"
+              placeholder="Avatar"
+              name="movieName"
+              id="movieName"
+            />
+          </label>
+
+          <label for="releaseDate">
+            Release Date:
+            <input type="date" name="releaseDate" id="releaseDate" />
+          </label>
+          <button class="moviesSubmit" type="submit">Submit</button>
+          <div class="updateButtons">
+            <button class="movieUpdateBtn" type="submit">Update Movie</button>
+            <button class="addState actionBtn--red" type="button" >Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

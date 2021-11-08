@@ -2,6 +2,7 @@
 using MoviesBLL.Services;
 using MoviesLibrary.DTOs;
 using MoviesLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -24,6 +25,13 @@ namespace MoviesAPI.Controllers
             var movies = await movieService.GetMovieListAsync();
 
             return movies;
+        }
+
+        [HttpGet]
+        [Route("paged/{pageSize}/{pageNumber}")]
+        public async Task<ActionResult<List<MovieOut>>> GetAllMoviesPaginated(int pageSize, int pageNumber)
+        {
+            throw new NotImplementedException();
         }
 
         [HttpGet("actor/{id}")]
@@ -63,7 +71,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task DeleteMovie(int id)
+        public async Task DeleteMovie([FromRoute]int id)
         {
             await movieService.DeleteMovieByIdAsync(id);
         }

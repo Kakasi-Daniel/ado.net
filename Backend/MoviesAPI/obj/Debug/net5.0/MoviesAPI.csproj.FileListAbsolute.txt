@@ -123,7 +123,6 @@ C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\staticwebassets\MoviesA
 C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\staticwebassets\MoviesAPI.StaticWebAssets.xml
 C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\scopedcss\bundle\MoviesAPI.styles.css
 C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.RazorTargetAssemblyInfo.cache
-C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.csproj.CopyComplete
 C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.dll
 C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\ref\MoviesAPI.dll
 C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.pdb

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MrA9nmUPy3kJNVpgy4vB/JKDX948mKHTeO0BxenesbFt7LA788JiXB8ET6QYPTkKFL3vYJCttaxoNMgSTcsynA==",
+  "dgSpecHash": "PAPS7NDwn4aWgDW7763BN8rgR7MdLdLU+HBpGm6HppTuYjWtUT0CVdfMnwgA5krU3++oUPb3yv+qNM1F25FH+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesLibrary\\MoviesLibrary.csproj",
+  "projectFilePath": "C:\\Projects\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

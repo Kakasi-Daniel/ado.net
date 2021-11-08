@@ -625,32 +625,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kakas\\.nuget\\packages\\": {}
+    "C:\\Users\\KakasiDaniel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesDAL\\MoviesDAL.csproj",
+      "projectUniqueName": "C:\\Projects\\MoviesApp\\Backend\\MoviesDAL\\MoviesDAL.csproj",
       "projectName": "MoviesDAL",
-      "projectPath": "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesDAL\\MoviesDAL.csproj",
-      "packagesPath": "C:\\Users\\kakas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesDAL\\obj\\",
+      "projectPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesDAL\\MoviesDAL.csproj",
+      "packagesPath": "C:\\Users\\KakasiDaniel\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesDAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\kakas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\KakasiDaniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesLibrary\\MoviesLibrary.csproj": {
-              "projectPath": "C:\\Users\\kakas\\Desktop\\ado.net\\Backend\\MoviesLibrary\\MoviesLibrary.csproj"
+            "C:\\Projects\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj": {
+              "projectPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj"
             }
           }
         }
@@ -701,7 +703,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\kakas\\.dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
