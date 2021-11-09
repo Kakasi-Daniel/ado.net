@@ -1,4 +1,5 @@
-﻿using Dapper.Contrib.Extensions;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
 using Microsoft.Extensions.Options;
 using MoviesDAL.Repositories.Interfaces;
 using MoviesLibrary;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using TableAttribute = System.ComponentModel.DataAnnotations.Schema.TableAttribute;
 
 namespace MoviesDAL.Repositories
 {
@@ -38,8 +40,37 @@ namespace MoviesDAL.Repositories
             var res = await Db.GetAllAsync<T>();
 
             return res.ToList();
-        } 
-        
+        }
+
+        public async Task<List<T>> GetPaginatedAsync(int pageSize, int pageNumber)
+        {
+            var tableAttribute = typeof(T)
+                .GetCustomAttributes(true)
+                .Where(x => x.GetType() == typeof(TableAttribute))
+                .Cast<TableAttribute>()
+                .FirstOrDefault();
+
+            var tableName = tableAttribute?.Name;
+            if (string.IsNullOrWhiteSpace(tableName))
+            {
+                throw new System.Exception("Model has no table name defined");
+            }
+
+            var options = new
+            {
+                offset = (pageNumber - 1) * pageSize,
+                pageSize = pageSize
+            };
+            string sql = $@"SELECT *
+                           FROM {tableName}
+                           ORDER BY ID
+                           OFFSET @offset ROWS FETCH NEXT @pageSize ROWS ONLY;";
+
+            var res = await Db.QueryAsync<T>(sql, options);
+
+            return res.ToList();
+        }
+
         public async Task<List<T>> GetByIDs(List<int> IDs)
         {
             var res = await Db.GetAllAsync<T>();

@@ -1,35 +1,68 @@
-let selectedRow = null;
+let currentPage = 1;
 
 const appendRow = (data) => {
-  const row = document.createElement("tr");
-  row.setAttribute("data-id", data.id);
-  row.innerHTML = `<td>${data.id}</td>
-      <td>${data.name}</td>
-      <td>${data.releaseDate.slice(0, 10)}</td>
-      <td class="actions" ><button data-id=${
-        data.id
-      } class="actionBtn actionBtnDelete actionBtn--red" >Delete</button><button data-id=${
+  const row = $("<tr></tr>").appendTo(".moviesTable");
+  row.attr("data-id", data.id);
+  row.html(`<td>${data.id}</td>
+  <td>${data.name}</td>
+  <td>${data.releaseDate.slice(0, 10)}</td>
+  <td class="actions" ><button data-id=${
     data.id
-  } class="actionBtn actionBtnUpdate" >Update</button></td>`;
+  } class="actionBtn actionBtnDelete actionBtn--red" >Delete</button><button data-id=${
+    data.id
+  } class="actionBtn actionBtnUpdate" >Update</button></td>`);
+};
 
-  document.querySelector(".moviesTable").appendChild(row);
+const drawButtons = (buttons, current) => {
+  $(".buttons").html("");
+  const buttonsContainer = $("<ul></ul>").appendTo(".buttons");
+  buttonsContainer.addClass("pageButtonsList");
+
+  for (let i = 1; i <= buttons; i++) {
+    const buttonItem = $("<li></li>").appendTo(buttonsContainer);
+    const button = $("<button></button>").appendTo(buttonItem);
+    button.text(i);
+    button.addClass("pageButton");
+    if (current === i) {
+      button.addClass("current");
+    }
+    button.attr("data-page", i);
+  }
 };
 
 const displayError = (message) => {
-  const error = document.createElement("p");
-  error.style.color = "red";
-  error.innerText = message;
-  document.querySelector(".moviesForm").appendChild(error);
+  const error = $("<p></p>").appendTo(".moviesForm");
+  error.css("color", "red");
+  error.text(message);
   setTimeout(() => {
     error.remove();
   }, 1500);
 };
 
-const getMovies = async () => {
-  const res = await fetch("https://localhost:44333/api/Movies");
-  const data = await res.json();
+const getMovies = async (page, pageSize = 10) => {
+  const tableHeight = $(".moviesTable")?.height();
+  const tableWidth = $(".moviesTable")?.width();
+  $(".moviesTable").css("height", tableHeight);
+  $(".moviesTable").css("width", tableWidth);
+  $(".moviesTable").html(`<div class="spinner" ></div>`);
 
-  data.forEach((movie) => appendRow(movie));
+  const res = await fetch(
+    `https://localhost:44333/api/Movies/paged/${pageSize}/${page}`
+  );
+  const data = await res.json();
+  currentPage = data.page;
+  $(".moviesTable").html(`
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Release Date</th>
+    <th>Actions</th>
+  </tr>`);
+
+  data.data.forEach((movie) => appendRow(movie));
+  $(".moviesTable").css("height", "auto");
+  $(".moviesTable").css("width", "auto");
+  drawButtons(data.pages, currentPage);
 };
 
 const postMovie = async (movie) => {
@@ -65,67 +98,59 @@ const updateMovie = async (movie, id) => {
 };
 
 const deleteMovie = async (id) => {
-  selectedRow.remove();
-  selectedRow = null;
-  document.querySelector(".modal").remove();
   await fetch(`https://localhost:44333/api/Movies/${id}`, {
     method: "DELETE",
   });
+  updateTable();
+  $(".modal").remove();
 };
 
 const showModal = (id) => {
-  const modal = document.createElement("div");
-  modal.classList.add("modal");
-  modal.innerHTML = `
-    <div class="modalBox">
-      <p>Are you sure you want to delete movie with id ${id}?</p>
-      <div class="deleteConfirm" >
-        <button data-id=${id} class="deleteYes">Yes</button>
-        <button class="deleteNo">No</button>
-      </div>
+  const modal = $("<div></div>").appendTo("body");
+  modal.addClass("modal");
+  modal.html(`
+  <div class="modalBox">
+    <p>Are you sure you want to delete movie with id ${id}?</p>
+    <div class="deleteConfirm" >
+      <button data-id=${id} class="deleteYes">Yes</button>
+      <button class="deleteNo">No</button>
     </div>
-  `;
-
-  document.querySelector("body").appendChild(modal);
+  </div>`);
 };
 
 const updateTable = () => {
-  document.querySelector(".moviesTable").innerHTML = "";
-  getMovies();
+  $(".moviesTable").html("");
+  getMovies(currentPage);
 };
 
 const normalState = () => {
-  $("#movieName")
-  document.querySelector("#movieName").value = "";
-  document.querySelector("#releaseDate").value = "";
-  document.querySelector(".moviesSubmit").style.display = "block";
-  document.querySelector(".updateButtons").style.display = "none";
-  document.querySelector(".state").innerText = "Add movie";
-  document.querySelector(".movieUpdateBtn").removeAttribute("data-id");
+  $("#movieName").val("");
+  $("#releaseDate").val("");
+  $(".moviesSubmit").css("display", "block");
+  $(".updateButtons").css("display", "none");
+  $(".state").text("Add movie");
+  $(".movieUpdateBtn").removeAttr("data-id");
 };
 
 const updateState = async (id) => {
   const res = await fetch(`https://localhost:44333/api/Movies/${id}`);
   const current = await res.json();
-  document.querySelector("#movieName").value = current.name;
-  document.querySelector("#releaseDate").value = current.releaseDate.slice(
-    0,
-    10
-  );
-  document.querySelector(".moviesSubmit").style.display = "none";
-  document.querySelector(".updateButtons").style.display = "block";
-  document.querySelector(".state").innerText = "Update movie: " + current.name;
-  document.querySelector(".movieUpdateBtn").setAttribute("data-id", id);
+  $("#movieName").val(current.name);
+  $("#releaseDate").val(current.releaseDate.slice(0, 10));
+  $(".moviesSubmit").css("display", "none");
+  $(".updateButtons").css("display", "block");
+  $(".state").text("Update movie: " + current.name);
+  $(".movieUpdateBtn").attr("data-id", id);
 };
 
-$(document).ready(function () {
+$(document).ready(() => {
   window.onclick = (e) => {
     if (e.target.classList.contains("actionBtnDelete")) {
       selectedRow = e.target.parentElement.parentElement;
       const id = +e.target.getAttribute("data-id");
       showModal(id);
     }
-    if (e.target.classList.contains("deleteYes") && selectedRow != null) {
+    if (e.target.classList.contains("deleteYes")) {
       const id = +e.target.getAttribute("data-id");
       deleteMovie(id);
     }
@@ -141,16 +166,22 @@ $(document).ready(function () {
     if (e.target.classList.contains("addState")) {
       normalState();
     }
+
+    if (e.target.classList.contains("pageButton")) {
+      const page = +e.target.getAttribute("data-page");
+      getMovies(page);
+    }
+
     if (e.target.classList.contains("movieUpdateBtn")) {
       e.preventDefault();
       const id = +e.target.getAttribute("data-id");
       const movie = {};
-      movie.name = document.querySelector("#movieName").value;
-      movie.releaseDate = document.querySelector("#releaseDate").value;
+      movie.name = $("#movieName").val();
+      movie.releaseDate = $("#releaseDate").val();
 
       if (movie.name != "" && movie.releaseDate != "") {
-        document.querySelector("#movieName").value = "";
-        document.querySelector("#releaseDate").value = "";
+        $("#movieName").val("");
+        $("#releaseDate").val("");
         updateMovie(movie, id);
       } else {
         displayError("All fields are mandatory!");
@@ -158,20 +189,22 @@ $(document).ready(function () {
     }
   };
 
-  document.querySelector(".moviesSubmit").addEventListener("click", (e) => {
+  $(".moviesSubmit").on("click", (e) => {
     e.preventDefault();
     const movie = {};
-    movie.name = document.querySelector("#movieName").value;
-    movie.releaseDate = document.querySelector("#releaseDate").value;
+    movie.name = $("#movieName").val();
+    movie.releaseDate = $("#releaseDate").val();
+    console.log(movie.name);
+    console.log(movie.releaseDate);
 
     if (movie.name != "" && movie.releaseDate != "") {
-      document.querySelector("#movieName").value = "";
-      document.querySelector("#releaseDate").value = "";
+      $("#movieName").val("");
+      $("#releaseDate").val("");
       postMovie(movie);
     } else {
       displayError("All fields are mandatory!");
     }
   });
 
-  getMovies();
+  getMovies(currentPage);
 });

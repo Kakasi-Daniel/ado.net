@@ -19,6 +19,7 @@ namespace MoviesAPI.Controllers
             this.movieService = movieService;
         }
 
+        
         [HttpGet]
         public async Task<ActionResult<List<MovieOut>>> GetAllMovies()
         {
@@ -29,9 +30,11 @@ namespace MoviesAPI.Controllers
 
         [HttpGet]
         [Route("paged/{pageSize}/{pageNumber}")]
-        public async Task<ActionResult<List<MovieOut>>> GetAllMoviesPaginated(int pageSize, int pageNumber)
+        public async Task<ActionResult<PaginationResult>> GetAllMoviesPaginated(int pageSize, int pageNumber)
         {
-            throw new NotImplementedException();
+            var movies = await movieService.GetMoviesPaginated(pageSize > 10 ? 10 : pageSize, pageNumber < 1 ? 1 : pageNumber);
+
+            return movies;
         }
 
         [HttpGet("actor/{id}")]

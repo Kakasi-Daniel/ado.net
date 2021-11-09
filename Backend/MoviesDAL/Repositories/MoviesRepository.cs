@@ -30,6 +30,36 @@ namespace MoviesDAL.Repositories
             var res = await Db.QueryAsync<MovieModel>(sql, new { id });
 
             return res.ToList();
+        } 
+        
+        public async Task<int> GetNumberOfRows()
+        {
+            string sql = "select count(*) from movies;";
+
+            var res = await Db.QueryAsync<int>(sql);
+
+            return res.FirstOrDefault();
         }
+
+        //public async Task<List<MovieModel>> GetPaginatedAsync(int pageSize,int pageNumber)
+        //{
+        //    var options = new
+        //    {
+        //        offset = (pageNumber - 1) * pageSize,
+        //        pageSize = pageSize
+        //    };
+        //    string sql = @"SELECT *
+        //                   FROM Movies
+        //                   ORDER BY ID
+        //                   OFFSET @offset ROWS FETCH NEXT @pageSize ROWS ONLY;";
+
+        //    var res = await Db.QueryAsync<MovieModel>(sql,options);
+
+        //    return res.ToList();
+        //}
+
+        
+
+
     }
 }

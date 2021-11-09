@@ -44,7 +44,7 @@ C:\Projects\MoviesApp\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.GeneratedMSBu
 C:\Projects\MoviesApp\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.AssemblyInfoInputs.cache
 C:\Projects\MoviesApp\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.AssemblyInfo.cs
 C:\Projects\MoviesApp\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.csproj.CoreCompileInputs.cache
-C:\Projects\MoviesApp\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.csproj.CopyComplete
 C:\Projects\MoviesApp\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.dll
 C:\Projects\MoviesApp\Backend\MoviesBLL\obj\Debug\net5.0\ref\MoviesBLL.dll
 C:\Projects\MoviesApp\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.pdb
+C:\Projects\MoviesApp\Backend\MoviesBLL\obj\Debug\net5.0\MoviesBLL.csproj.CopyComplete

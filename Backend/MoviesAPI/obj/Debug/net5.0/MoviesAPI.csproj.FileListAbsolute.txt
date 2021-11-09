@@ -132,3 +132,4 @@ C:\Users\kakas\Desktop\ado.net\Backend\MoviesAPI\bin\Debug\net5.0\AutoMapper.Ext
 C:\Users\kakas\Desktop\ado.net\Backend\MoviesAPI\bin\Debug\net5.0\Dapper.dll
 C:\Users\kakas\Desktop\ado.net\Backend\MoviesAPI\bin\Debug\net5.0\Dapper.Contrib.dll
 C:\Users\kakas\Desktop\ado.net\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.csproj.CopyComplete
+C:\Projects\MoviesApp\Backend\MoviesAPI\obj\Debug\net5.0\MoviesAPI.csproj.CopyComplete

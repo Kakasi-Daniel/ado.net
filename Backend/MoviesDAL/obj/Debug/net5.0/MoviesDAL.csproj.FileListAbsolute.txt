@@ -38,7 +38,7 @@ C:\Projects\MoviesApp\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.GeneratedMSBu
 C:\Projects\MoviesApp\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.AssemblyInfoInputs.cache
 C:\Projects\MoviesApp\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.AssemblyInfo.cs
 C:\Projects\MoviesApp\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.csproj.CoreCompileInputs.cache
-C:\Projects\MoviesApp\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.csproj.CopyComplete
 C:\Projects\MoviesApp\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.dll
 C:\Projects\MoviesApp\Backend\MoviesDAL\obj\Debug\net5.0\ref\MoviesDAL.dll
 C:\Projects\MoviesApp\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.pdb
+C:\Projects\MoviesApp\Backend\MoviesDAL\obj\Debug\net5.0\MoviesDAL.csproj.CopyComplete

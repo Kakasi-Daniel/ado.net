@@ -7,5 +7,6 @@ namespace MoviesDAL.Repositories.Interfaces
     public interface IMoviesRepository : IRepository<MovieModel>
     {
         Task<List<MovieModel>> GetByActorId(int id);
+        Task<int> GetNumberOfRows();
     }
 }
