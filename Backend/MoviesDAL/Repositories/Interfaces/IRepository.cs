@@ -12,5 +12,6 @@ namespace MoviesDAL.Repositories.Interfaces
         Task UpdateAsync(int id, T model);
         Task DeleteAsync(int id);
         Task<List<T>> GetPaginatedAsync(int pageSize, int pageNumber);
+        Task<int> GetNumberOfRows();
     }
 }

@@ -92,5 +92,22 @@ namespace MoviesDAL.Repositories
 
             await Db.UpdateAsync<T>(model);
         }
+
+        public async Task<int> GetNumberOfRows()
+        {
+            var tableAttribute = typeof(T)
+                .GetCustomAttributes(true)
+                .Where(x => x.GetType() == typeof(TableAttribute))
+                .Cast<TableAttribute>()
+                .FirstOrDefault();
+
+            var tableName = tableAttribute?.Name;
+
+            string sql = $"select count(*) from {tableName};";
+
+            var res = await Db.QueryAsync<int>(sql);
+
+            return res.FirstOrDefault();
+        }
     }
 }

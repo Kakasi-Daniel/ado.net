@@ -23,6 +23,15 @@ namespace MoviesAPI.Controllers
             return await roleService.GetRolesAsync();
         }
 
+        [HttpGet]
+        [Route("paged/{pageSize}/{pageNumber}")]
+        public async Task<ActionResult<PaginationResult<RoleOutWithNames>>> GetAllMoviesPaginated(int pageSize, int pageNumber)
+        {
+            var roles = await roleService.GetPaginated(pageSize > 10 ? 10 : pageSize, pageNumber < 1 ? 1 : pageNumber);
+
+            return roles;
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<RoleOutWithNames>> GetRole([FromRoute] int id)
         {

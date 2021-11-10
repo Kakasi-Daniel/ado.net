@@ -2,6 +2,7 @@
 using MoviesDAL.Repositories.Interfaces;
 using MoviesLibrary.DTOs;
 using MoviesLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -58,6 +59,29 @@ namespace MoviesBLL.Services
             await rolesRepo.UpdateAsync(id, mapper.Map<RoleModel>(role));
         }
 
+        public async Task<PaginationResult<RoleOutWithNames>> GetPaginated(int pageSize, int pageNumber)
+        {
+            var noOfRoles = await rolesRepo.GetNumberOfRows();
+            var noOfPages = Convert.ToInt32(Math.Ceiling(((decimal)noOfRoles / (decimal)pageSize)));
+            var currentPage = pageNumber > noOfPages ? noOfPages : pageNumber;
+            var roles = await rolesRepo.GetPaginatedAsync(pageSize, currentPage);
+            var rolesData = new List<RoleOutWithNames>();
 
+            foreach (var role in roles)
+            {
+                var roleWithNames = mapper.Map<RoleOutWithNames>(role);
+                var movie = await moviesRepo.GetByIdAsync(roleWithNames.MovieId);
+                var actor = await actorsRepo.GetByIdAsync(roleWithNames.ActorId);
+                roleWithNames.MovieName = movie.Name;
+                roleWithNames.ActorName = actor.Name;
+                roleWithNames.ActorName += " " + actor.Surname;
+
+                rolesData.Add(roleWithNames);
+            }
+
+            
+
+            return new PaginationResult<RoleOutWithNames>(rolesData, noOfPages, currentPage);
+        }
     }
 }

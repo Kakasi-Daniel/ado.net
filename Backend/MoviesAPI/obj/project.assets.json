@@ -1318,19 +1318,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\KakasiDaniel\\.nuget\\packages\\": {}
+    "C:\\Users\\kakas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\MoviesApp\\Backend\\MoviesAPI\\MoviesAPI.csproj",
+      "projectUniqueName": "C:\\Users\\kakas\\Desktop\\MoviesApp\\Backend\\MoviesAPI\\MoviesAPI.csproj",
       "projectName": "MoviesAPI",
-      "projectPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesAPI\\MoviesAPI.csproj",
-      "packagesPath": "C:\\Users\\KakasiDaniel\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesAPI\\obj\\",
+      "projectPath": "C:\\Users\\kakas\\Desktop\\MoviesApp\\Backend\\MoviesAPI\\MoviesAPI.csproj",
+      "packagesPath": "C:\\Users\\kakas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kakas\\Desktop\\MoviesApp\\Backend\\MoviesAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\KakasiDaniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kakas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1344,11 +1344,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Projects\\MoviesApp\\Backend\\MoviesBLL\\MoviesBLL.csproj": {
-              "projectPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesBLL\\MoviesBLL.csproj"
+            "C:\\Users\\kakas\\Desktop\\MoviesApp\\Backend\\MoviesBLL\\MoviesBLL.csproj": {
+              "projectPath": "C:\\Users\\kakas\\Desktop\\MoviesApp\\Backend\\MoviesBLL\\MoviesBLL.csproj"
             },
-            "C:\\Projects\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj": {
-              "projectPath": "C:\\Projects\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj"
+            "C:\\Users\\kakas\\Desktop\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj": {
+              "projectPath": "C:\\Users\\kakas\\Desktop\\MoviesApp\\Backend\\MoviesLibrary\\MoviesLibrary.csproj"
             }
           }
         }
@@ -1382,6 +1382,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.12, 5.0.12]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -1390,7 +1408,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

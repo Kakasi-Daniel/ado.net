@@ -2,6 +2,7 @@
 using MoviesDAL.Repositories.Interfaces;
 using MoviesLibrary.DTOs;
 using MoviesLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,7 +48,16 @@ namespace MoviesBLL.Services
             await ratingRepos.DeleteAsync(id);
         }
 
-        
+        public async Task<PaginationResult<RatingOut>> GetPaginated(int pageSize, int pageNumber)
+        {
+            var noOfRatings = await ratingRepos.GetNumberOfRows();
+            var noOfPages = Convert.ToInt32(Math.Ceiling(((decimal)noOfRatings / (decimal)pageSize)));
+            var currentPage = pageNumber > noOfPages ? noOfPages : pageNumber;
+            var ratings = await ratingRepos.GetPaginatedAsync(pageSize, currentPage);
+            var ratingsData = ratings.Select(mapper.Map<RatingOut>).ToList();
+
+            return new PaginationResult<RatingOut>(ratingsData, noOfPages, currentPage);
+        }
 
 
     }

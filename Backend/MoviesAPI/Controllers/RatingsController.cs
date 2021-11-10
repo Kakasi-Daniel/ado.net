@@ -24,6 +24,15 @@ namespace MoviesAPI.Controllers
             return await ratings.GetRatingsAsync();
         }
 
+        [HttpGet]
+        [Route("paged/{pageSize}/{pageNumber}")]
+        public async Task<ActionResult<PaginationResult<RatingOut>>> GetAllMoviesPaginated(int pageSize, int pageNumber)
+        {
+            var ratingsList = await ratings.GetPaginated(pageSize > 10 ? 10 : pageSize, pageNumber < 1 ? 1 : pageNumber);
+
+            return ratingsList;
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<RatingOut>> GetRating([FromRoute] int id)
         {   

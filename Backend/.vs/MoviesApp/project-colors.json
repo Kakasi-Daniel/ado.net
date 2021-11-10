@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "be23f939-d3e7-49fa-84c9-2ce4f5547df0": {
+      "ProjectGuid": "be23f939-d3e7-49fa-84c9-2ce4f5547df0",
+      "DisplayName": "MoviesAPI",
+      "ColorIndex": 0
+    },
+    "a8962b60-2a83-4119-a929-5384caf36a2d": {
+      "ProjectGuid": "a8962b60-2a83-4119-a929-5384caf36a2d",
+      "DisplayName": "MoviesLibrary",
+      "ColorIndex": 1
+    },
+    "becb9b93-c317-4462-a801-1535e5b3871d": {
+      "ProjectGuid": "becb9b93-c317-4462-a801-1535e5b3871d",
+      "DisplayName": "MoviesBLL",
+      "ColorIndex": 2
+    },
+    "1a26b134-aec0-4726-b6e7-7931d0d02342": {
+      "ProjectGuid": "1a26b134-aec0-4726-b6e7-7931d0d02342",
+      "DisplayName": "MoviesDAL",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

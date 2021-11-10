@@ -32,14 +32,7 @@ namespace MoviesDAL.Repositories
             return res.ToList();
         } 
         
-        public async Task<int> GetNumberOfRows()
-        {
-            string sql = "select count(*) from movies;";
-
-            var res = await Db.QueryAsync<int>(sql);
-
-            return res.FirstOrDefault();
-        }
+       
 
         //public async Task<List<MovieModel>> GetPaginatedAsync(int pageSize,int pageNumber)
         //{

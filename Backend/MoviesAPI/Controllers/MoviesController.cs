@@ -30,9 +30,9 @@ namespace MoviesAPI.Controllers
 
         [HttpGet]
         [Route("paged/{pageSize}/{pageNumber}")]
-        public async Task<ActionResult<PaginationResult>> GetAllMoviesPaginated(int pageSize, int pageNumber)
+        public async Task<ActionResult<PaginationResult<MovieOut>>> GetAllMoviesPaginated(int pageSize, int pageNumber)
         {
-            var movies = await movieService.GetMoviesPaginated(pageSize > 10 ? 10 : pageSize, pageNumber < 1 ? 1 : pageNumber);
+            var movies = await movieService.GetPaginated(pageSize > 10 ? 10 : pageSize, pageNumber < 1 ? 1 : pageNumber);
 
             return movies;
         }

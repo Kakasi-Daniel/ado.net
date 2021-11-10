@@ -33,3 +33,14 @@ C:\Projects\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.dll
 C:\Projects\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\ref\MoviesLibrary.dll
 C:\Projects\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.pdb
 C:\Projects\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.csproj.AssemblyReference.cache
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\bin\Debug\net5.0\MoviesLibrary.deps.json
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\bin\Debug\net5.0\MoviesLibrary.dll
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\bin\Debug\net5.0\ref\MoviesLibrary.dll
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\bin\Debug\net5.0\MoviesLibrary.pdb
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.AssemblyInfoInputs.cache
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.AssemblyInfo.cs
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.csproj.CoreCompileInputs.cache
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.dll
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\ref\MoviesLibrary.dll
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.pdb

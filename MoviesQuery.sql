@@ -8,13 +8,13 @@
 --  ReleaseDate date not null
 --);
 
---insert into Movies(Name,ReleaseDate) values
---('Interstellar','2014-04-25'),
---('Dune','2021-10-28'),
---('F9','2021-08-25'),
---('The Godfather','1972-03-23'),
---('The Wolverine','2013-06-15'),
---('Logan','2017-05-27');
+insert into Movies(Name,ReleaseDate) values
+('Interstellar','2014-04-25'),
+('Dune','2021-10-28'),
+('F9','2021-08-25'),
+('The Godfather','1972-03-23'),
+('The Wolverine','2013-06-15'),
+('Logan','2017-05-27');
  
 --create table Actors (
 --  ID int identity(1,1) primary key,
@@ -91,4 +91,4 @@
 --ORDER BY ID
 --OFFSET 3 ROWS FETCH NEXT 6 ROWS ONLY
 
-select count(*) from movies;
+--select count(*) from movies;

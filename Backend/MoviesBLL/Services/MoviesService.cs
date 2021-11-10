@@ -20,7 +20,7 @@ namespace MoviesBLL.Services
             this.mapper = mapper;
         }
 
-        public async Task<PaginationResult> GetMoviesPaginated(int pageSize,int pageNumber)
+        public async Task<PaginationResult<MovieOut>> GetPaginated(int pageSize,int pageNumber)
         {
             var noOfMovies = await movieRepo.GetNumberOfRows();
             var noOfPages = Convert.ToInt32(Math.Ceiling(((decimal)noOfMovies / (decimal)pageSize)));
@@ -28,7 +28,7 @@ namespace MoviesBLL.Services
             var movies = await movieRepo.GetPaginatedAsync(pageSize, currentPage);
             var moviesData = movies.Select(mapper.Map<MovieOut>).ToList();
 
-            return new PaginationResult(moviesData, noOfPages,currentPage);
+            return new PaginationResult<MovieOut>(moviesData, noOfPages,currentPage);
         }
         
         public async Task<List<MovieOut>> GetMoviesByActorId(int id)

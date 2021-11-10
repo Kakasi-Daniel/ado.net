@@ -51,7 +51,7 @@ namespace MoviesAPI
             app.UseRouting();
 
             app.UseCors(
-       options => options.WithOrigins("http://127.0.0.1:5500").AllowAnyMethod().AllowAnyHeader()
+       options => options.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader()
    ); ;
 
             app.UseAuthorization();

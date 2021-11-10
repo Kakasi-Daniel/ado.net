@@ -25,6 +25,15 @@ namespace MoviesAPI.Controllers
             return await actorsService.GetActorsAsync();
         }
 
+        [HttpGet]
+        [Route("paged/{pageSize}/{pageNumber}")]
+        public async Task<ActionResult<PaginationResult<ActorOut>>> GetAllMoviesPaginated(int pageSize, int pageNumber)
+        {
+            var actors = await actorsService.GetPaginated(pageSize > 10 ? 10 : pageSize, pageNumber < 1 ? 1 : pageNumber);
+
+            return actors;
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ActorOut>> GetActorByID(int id)
         {
