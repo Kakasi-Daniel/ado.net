@@ -27,6 +27,7 @@ namespace MoviesBLL.Services
             var currentPage = pageNumber > noOfPages ? noOfPages : pageNumber;
             var movies = await movieRepo.GetPaginatedAsync(pageSize, currentPage);
             var moviesData = movies.Select(mapper.Map<MovieOut>).ToList();
+            
 
             return new PaginationResult<MovieOut>(moviesData, noOfPages,currentPage);
         }

@@ -44,3 +44,4 @@ C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLi
 C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.dll
 C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\ref\MoviesLibrary.dll
 C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.pdb
+C:\Users\kakas\Desktop\MoviesApp\Backend\MoviesLibrary\obj\Debug\net5.0\MoviesLibrary.csproj.AssemblyReference.cache

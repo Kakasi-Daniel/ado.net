@@ -1,4 +1,6 @@
 import "./Row.css";
+import DeleteIcon from "@mui/icons-material/Delete";
+import UpgradeIcon from "@mui/icons-material/Upgrade";
 
 const Row = (props) => {
   return (
@@ -8,9 +10,19 @@ const Row = (props) => {
           {cell}
         </td>
       ))}
-      <td>
-        <button className="actionBtn actionBtn--red" >Delete</button>
-        <button onClick={props.changeState.bind(null,props.data[0])} className="actionBtn" >Update</button>
+      <td className="actionButtonsRow">
+        <button
+          onClick={props.onDelete.bind(null, props.data[0])}
+          className="actionBtn actionBtn--red"
+        >
+          Delete <DeleteIcon />
+        </button>
+        <button
+          onClick={props.changeState.bind(null, props.data[0])}
+          className="actionBtn"
+        >
+          Update <UpgradeIcon />
+        </button>
       </td>
     </tr>
   );

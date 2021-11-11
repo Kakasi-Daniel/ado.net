@@ -103,7 +103,7 @@ namespace MoviesDAL.Repositories
 
             var tableName = tableAttribute?.Name;
 
-            string sql = $"select count(*) from {tableName};";
+            string sql = $"select count(1) from {tableName};";
 
             var res = await Db.QueryAsync<int>(sql);
 
