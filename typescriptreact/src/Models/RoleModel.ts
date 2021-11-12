@@ -5,7 +5,7 @@ class Role{
     constructor(){
         this.Name="";
         this.ActorId="";
-        this.MovieId="";
+        this.MovieId=""
     }
 }
 

@@ -3,7 +3,7 @@ class RatingModel{
     Rating: string;
     constructor(){
         this.MovieId="";
-        this.Rating=""
+        this.Rating="";
     }
 }
 

@@ -1,9 +1,25 @@
 import { Fragment, useEffect, useState } from "react";
+import ActorModel from "../Models/ActorModel";
+import MovieModel from "../Models/MovieModel";
+import RatingModel from "../Models/RatingModel";
+import RoleModel from "../Models/RoleModel";
+import getTable, {
+  addRow,
+  deleteRow,
+  getRow,
+  updateRow,
+} from "../Services/HttpServices";
 import "./Table.css";
+import { GoDiffAdded, FiTrash,GoDiffRenamed,MdOutlineCancelPresentation, GiUpgrade } from "react-icons/all";
 
-const ignoredInputs = ["id","movieName","actorName"]
+const ignoredInputs = ["id", "movieName", "actorName"];
 
-const Table = <T extends object>(props: { modelType: T; title: string }) => {
+const Table = <
+  T extends MovieModel | ActorModel | RatingModel | RoleModel
+>(props: {
+  modelType: T;
+  title: string;
+}) => {
   const [rows, setRows] = useState<string[][]>([[]]);
   const [page, setPage] = useState(1);
   const [columns, setColumns] = useState<JSX.Element[]>([]);
@@ -12,6 +28,7 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
   const [inputs, setInputs] = useState<T>(props.modelType);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [pageHeight, setPageHeight] = useState("5");
 
   const inputChangerGenerator = (
     input: string
@@ -21,68 +38,55 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
     };
   };
 
+  const changePageHeightHandler: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    const newPageHeight = +e.target.value;
+    if (newPageHeight >= 3 && newPageHeight <= 10) {
+      setPageHeight(newPageHeight.toString());
+    }
+  };
+
   const updateStateHandler = async (id: string) => {
     setUpdatingId(id);
-    const res = await fetch(
-      `https://localhost:44333/api/${props.title}s/${id}`
-    );
-    const data = await res.json();
 
-    // const filteredData:T = {};
-    // for(let key of data){
-    //   if(!ignoredInputs.includes(key)) filteredData[key] = data[key];
-    // }
+    const data = await getRow(props.title, id);
 
-    // const updatingInputs:T = {...inputs}
+    const updatingInputs = { ...props.modelType };
 
-    // for(var key:string in data){
-    //   updatingInputs[key] = data[key];
-    // }
+    for (var inputUpdated in updatingInputs) {
+      updatingInputs[inputUpdated] = data[inputUpdated];
+    }
 
-    
-
-    setInputs({...data});
+    setInputs(updatingInputs);
   };
 
   const addHandler: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
 
     const audio = new Audio("https://media1.vocaroo.com/mp3/1nQMMVelCgae");
-
     let blankFields = false;
+
     for (let inp in inputs) {
-      if (inp.trim().length === 0) {
+      if (!inputs[inp]) {
         blankFields = true;
         break;
       }
     }
     if (!blankFields) {
       try {
-        const res = await fetch(`https://localhost:44333/api/${props.title}s`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(inputs),
-        });
-        if (res.status > 299) {
+        const res = await addRow(props.title, inputs);
+        if (res.status >= 300) {
           audio.play();
           setError("Error, check fields validity.");
         } else {
-          // const restoredInputs = inputs;
-          // for (let inpDat:(keyof T) in Object.keys(restoredInputs)) {
-          //   restoredInputs[inpDat] = "";
-          // }
-          // setInputs(restoredInputs);
-
           setInputs(props.modelType);
-
           setError("");
           setSubmitting(true);
         }
       } catch (e) {
         audio.play();
-        setError(`Error adding the ${props.title} try again later.`);
+        setError("Error, check fields validity.");
       }
     } else {
       audio.play();
@@ -103,16 +107,7 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
     }
     if (!blankFields) {
       try {
-        const res = await fetch(
-          `https://localhost:44333/api/${props.title}s/${updatingId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(inputs),
-          }
-        );
+        const res = await updateRow(props.title, inputs, updatingId);
         if (res.status > 299) {
           setError("Error, check fields validity.");
         } else {
@@ -128,29 +123,40 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
     }
   };
 
+  const deleteHandler = async (id: string) => {
+    const confirmResult = window.confirm(
+      `${props.title} with id ${id} will be permanently deleted!`
+    );
+
+    if (confirmResult) {
+      await deleteRow(props.title, id);
+      setSubmitting(true);
+      if (updatingId === id) {
+        cancelUpdateHandler();
+      }
+    }
+  };
+
   const cancelUpdateHandler = () => {
     setUpdatingId("");
-    // const restoredInputs = {};
-    // for (let inpDat of Object.keys(inputs)) {
-    //   restoredInputs[inpDat] = "";
-    // }
-
     setInputs(props.modelType);
   };
 
   useEffect(() => {
     (async () => {
       setSubmitting(false);
-      const res = await fetch(
-        `https://localhost:44333/api/${props.title}s/paged/5/${page}`
+      const tableData = await getTable(
+        props.title,
+        pageHeight,
+        page.toString()
       );
-      const jsonData = await res.json();
-      setPages(jsonData.pages);
-      if (page !== jsonData.page) {
-        setPage(jsonData.page);
+
+      setPages(tableData.pages);
+      if (page !== tableData.page) {
+        setPage(tableData.page);
       }
       let dataColumns: JSX.Element[] = [];
-      for (let column in jsonData.data[0]) {
+      for (let column in tableData.data[0]) {
         dataColumns.push(<th key={column}>{column}</th>);
       }
 
@@ -158,12 +164,12 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
 
       let arrayRows: string[][] = [];
 
-      for (let row in jsonData.data) {
-        arrayRows.push(Object.values(jsonData.data[row]));
+      for (let row in tableData.data) {
+        arrayRows.push(Object.values(tableData.data[row]));
       }
       setRows(arrayRows);
     })();
-  }, [page, submitting, props.title]);
+  }, [page, submitting, props.title, pageHeight]);
 
   return (
     <>
@@ -191,16 +197,20 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
                     ))}
                     <td className="actionButtonsRow">
                       <button
-                        onClick={cancelUpdateHandler}
+                        onClick={deleteHandler.bind(null, row[0])}
                         className="actionBtn actionBtn--red"
                       >
                         Delete
+                        &nbsp;
+                        <FiTrash/>
                       </button>
                       <button
                         onClick={updateStateHandler.bind(null, row[0])}
                         className="actionBtn"
                       >
                         Update
+                        &nbsp;
+                        <GoDiffRenamed/>
                       </button>
                     </td>
                   </tr>
@@ -208,18 +218,26 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
               </tbody>
             </table>
           </div>
-          <div className="pageButtons">
-            {new Array(pages).fill(null).map((_, index) => (
-              <button
-                className={
-                  index + 1 === page ? "current pageButton" : "pageButton"
-                }
-                key={index}
-                onClick={setPage.bind(null, index + 1)}
-              >
-                {index + 1}
-              </button>
-            ))}
+          <div className="pageControls">
+            <div className="pageButtons">
+              {new Array(pages).fill(null).map((_, index) => (
+                <button
+                  className={
+                    index + 1 === page ? "current pageButton" : "pageButton"
+                  }
+                  key={index}
+                  onClick={setPage.bind(null, index + 1)}
+                >
+                  {index + 1}
+                </button>
+              ))}
+            </div>
+            <input
+              className="pageHeight"
+              type="number"
+              onChange={changePageHeightHandler}
+              value={pageHeight}
+            />
           </div>
         </div>
         <div className="tableActions">
@@ -241,7 +259,9 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
                   name={input}
                   type="text"
                   value={Object.values(inputs)[index]}
+                  // value={inputs[input]}
                   onChange={inputChangerGenerator(input)}
+                  autoComplete="false"
                 />
               </Fragment>
             ))}
@@ -254,6 +274,8 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
                     className="actionBtn actionBtn--green"
                   >
                     Update {props.title}
+                    &nbsp;
+                    <GiUpgrade />
                   </button>
                   <button
                     onClick={cancelUpdateHandler}
@@ -261,6 +283,8 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
                     className="actionBtn actionBtn--red"
                   >
                     Cancel
+                    &nbsp;
+                    <MdOutlineCancelPresentation/>
                   </button>
                 </>
               ) : (
@@ -270,6 +294,8 @@ const Table = <T extends object>(props: { modelType: T; title: string }) => {
                   className="actionBtn actionBtn--blue"
                 >
                   Add {props.title}
+                  &nbsp;
+                  <GoDiffAdded />
                 </button>
               )}
             </div>
