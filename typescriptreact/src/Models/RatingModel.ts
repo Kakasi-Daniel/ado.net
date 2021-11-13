@@ -1,10 +1,10 @@
-class RatingModel{
-    MovieId:string;
-    Rating: string;
-    constructor(){
-        this.MovieId="";
-        this.Rating="";
-    }
+class RatingModel {
+  movieId: string | number;
+  rating: string | number;
+  constructor() {
+    this.movieId = "";
+    this.rating = "";
+  }
 }
 
 export default RatingModel;

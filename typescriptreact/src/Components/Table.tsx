@@ -12,8 +12,6 @@ import getTable, {
 import "./Table.css";
 import { GoDiffAdded, FiTrash,GoDiffRenamed,MdOutlineCancelPresentation, GiUpgrade } from "react-icons/all";
 
-const ignoredInputs = ["id", "movieName", "actorName"];
-
 const Table = <
   T extends MovieModel | ActorModel | RatingModel | RoleModel
 >(props: {
@@ -49,6 +47,7 @@ const Table = <
 
   const updateStateHandler = async (id: string) => {
     setUpdatingId(id);
+    if(error) setError("");
 
     const data = await getRow(props.title, id);
 
@@ -57,6 +56,9 @@ const Table = <
     for (var inputUpdated in updatingInputs) {
       updatingInputs[inputUpdated] = data[inputUpdated];
     }
+
+    console.log(data);
+    console.log(updatingInputs);
 
     setInputs(updatingInputs);
   };
@@ -116,7 +118,7 @@ const Table = <
           setSubmitting(true);
         }
       } catch (e) {
-        setError(`Error adding the ${props.title} try again later.`);
+        setError(`Error updating the ${props.title} try again later.`);
       }
     } else {
       setError("All fields are mandatory!");
@@ -138,6 +140,7 @@ const Table = <
   };
 
   const cancelUpdateHandler = () => {
+    if(error) setError("");
     setUpdatingId("");
     setInputs(props.modelType);
   };
@@ -248,20 +251,19 @@ const Table = <
           </h3>
           <form className="form">
             {error && <p className="error">{error}</p>}
-            {Object.keys(inputs).map((input, index) => (
+            {
+              (Object.keys(inputs) as Array<keyof T>).map((input, index) => (
               <Fragment key={index}>
-                <label className="inputLabel" htmlFor={input}>
+                <label className="inputLabel" htmlFor={input.toString()}>
                   {input + ": "}
                 </label>
                 <input
                   placeholder={`ex. ${rows[0][index + 1]}`}
                   className="input"
-                  name={input}
+                  name={input.toString()}
                   type="text"
-                  value={Object.values(inputs)[index]}
-                  // value={inputs[input]}
-                  onChange={inputChangerGenerator(input)}
-                  autoComplete="false"
+                  value={`${inputs[input]}`}
+                  onChange={inputChangerGenerator(input.toString())}
                 />
               </Fragment>
             ))}
